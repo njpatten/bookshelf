@@ -4,16 +4,8 @@ import Book from './Book'
 import BooksApp from './App';
 
 class BookShelf extends React.Component {
-  state = {
-    
-  }
-
-  componentDidMount = () => {
-   console.log(this.props.books)
-  }
 
   changeShelf = (shelf, book) => {
-    console.log(book, shelf);
     this.props.updateShelf(shelf, book)
   }
 

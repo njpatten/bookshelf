@@ -6,9 +6,9 @@ class Book extends React.Component {
     selectedShelf: '',
   }
 
-  componentDidMount = () => {
-    BooksAPI.get(this.props.bookID).then((book) => console.log(book));
-  }
+  // componentDidMount = () => {
+  //   BooksAPI.get(this.props.bookID).then((book) => console.log(book));
+  // }
 
   handleChange = (event) => {
     let newShelf = event.target.value;
@@ -34,7 +34,7 @@ class Book extends React.Component {
           </div>
         </div>
         <div className="book-title">{title}</div>
-        <div className="book-authors">{authors.join(', ')}</div>
+        {/* <div className="book-authors">{authors.join(', ')}</div> */}
       </div>
     )
   }

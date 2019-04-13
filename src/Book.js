@@ -1,14 +1,10 @@
 import React from 'react'
-import * as BooksAPI from './BooksAPI'
 
 class Book extends React.Component {
   state = {
     selectedShelf: '',
   }
 
-  // componentDidMount = () => {
-  //   BooksAPI.get(this.props.bookID).then((book) => console.log(book));
-  // }
 
   handleChange = (event) => {
     let newShelf = event.target.value;
@@ -24,7 +20,7 @@ class Book extends React.Component {
         <div className="book-top">
           <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url("${thumbnail}")` }}></div>
           <div className="book-shelf-changer">
-            <select value={shelf} onChange={(event) => this.handleChange(event)}>
+            <select value={shelf ? shelf : 'none'} onChange={(event) => this.handleChange(event)}>
               <option value="move" disabled>Move to...</option>
               <option value="currentlyReading">Currently Reading</option>
               <option value="wantToRead">Want to Read</option>
@@ -34,7 +30,7 @@ class Book extends React.Component {
           </div>
         </div>
         <div className="book-title">{title}</div>
-        {/* <div className="book-authors">{authors.join(', ')}</div> */}
+        {authors && authors.length ? <div className="book-authors">{authors.join(', ')}</div> : null}
       </div>
     )
   }

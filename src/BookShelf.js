@@ -1,7 +1,6 @@
 import React from 'react'
-// import * as BooksAPI from './BooksAPI'
 import Book from './Book'
-import BooksApp from './App';
+
 
 class BookShelf extends React.Component {
 
@@ -19,14 +18,16 @@ class BookShelf extends React.Component {
           <ol className="books-grid">
             
               {books.map(book => 
-                <li>
+                <li key={book.id}>
                   <Book
-                    thumbnail={book.imageLinks.thumbnail}
+                    thumbnail={book.imageLinks.thumbnail || 'https://via.placeholder.com/350x150'}
                     title={book.title}
                     authors={book.authors}
                     shelf={book.shelf}
                     bookID={book.id}
                     changeShelf={(shelf) => this.changeShelf(shelf, book)}
+                    displayAuthors={true}
+                    displayControls={true}
                   />
                 </li>
               )}

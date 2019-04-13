@@ -1,6 +1,5 @@
 import React from 'react'
-import { BrowserRouter as Router, Route, Link } from "react-router-dom"
-import * as BooksAPI from './BooksAPI'
+import { BrowserRouter as Router, Route } from "react-router-dom"
 import SearchPage from './SearchPage'
 import ListBooksPage from './ListBooksPage'
 import './App.css'

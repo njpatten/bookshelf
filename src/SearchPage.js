@@ -8,7 +8,8 @@ import Book from './Book'
 class SearchPage extends React.Component {
   state = {
     searchTerm: '',
-    booksSearchable: []
+    booksSearchable: [],
+    myBooks: [],
   }
 
   handleChange = (event) => {
@@ -36,6 +37,22 @@ class SearchPage extends React.Component {
       ))
   }
 
+  findShelf = (book) => {
+    let foundBook = this.state.myBooks.find(myBook => myBook.id === book.id)
+    if (foundBook){
+      return foundBook.shelf
+    }
+    else return 'none'
+  }
+
+  componentDidMount = () => {
+    this.getMyBooks();
+  }
+
+  getMyBooks = () => {
+    BooksAPI.getAll().then((books) => this.setState({myBooks: books}));
+  }
+
   render() {
     const { booksSearchable } = this.state;
 
@@ -58,7 +75,7 @@ class SearchPage extends React.Component {
                 thumbnail={book.imageLinks && book.imageLinks.thumbnail ? book.imageLinks.thumbnail : 'https://via.placeholder.com/350x150'}
                 title={book.title}
                 authors={book.authors}
-                shelf={book.shelf}
+                shelf={this.findShelf(book)}
                 bookID={book.id}
                 changeShelf={(shelf) => this.changeShelf(shelf, book)}
               />

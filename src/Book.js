@@ -1,10 +1,6 @@
 import React from 'react'
 
 class Book extends React.Component {
-  state = {
-    selectedShelf: '',
-  }
-
 
   handleChange = (event) => {
     let newShelf = event.target.value;
